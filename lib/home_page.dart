@@ -10,12 +10,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
-  static const List<Tab> tabs = <Tab>[
-    Tab(text: 'All'),
-    Tab(text: 'Living Room'),
-    Tab(text: 'Bedroom'),
-    Tab(text: 'Dining Room'),
-    Tab(text: 'Kitchen'),
+  final tabs = [
+    const Tab(text: 'All'),
+    const Tab(text: 'Living Room'),
+    const Tab(text: 'Bedroom'),
+    const Tab(text: 'Dining Room'),
+    const Tab(text: 'Kitchen'),
   ];
 
   late TabController _tabController;
@@ -23,13 +23,16 @@ class _HomePageState extends State<HomePage>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: tabs.length, vsync: this);
+    _tabController = TabController(
+      length: tabs.length,
+      vsync: this,
+    );
   }
 
   @override
   void dispose() {
-    _tabController.dispose();
     super.dispose();
+    _tabController.dispose();
   }
 
   @override
@@ -37,7 +40,7 @@ class _HomePageState extends State<HomePage>
     return Scaffold(
       backgroundColor: const Color(0xffF8F8F8),
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: const Color(0xffF8F8F8),
         leading: IconButton(
           icon: Image.asset('assets/icons/ic_drawer.png'),
           onPressed: () {},
@@ -81,7 +84,6 @@ class _HomePageState extends State<HomePage>
             height: 33.0,
             child: TabBar(
               isScrollable: true,
-              indicatorColor: Colors.transparent,
               indicator: BoxDecoration(
                 borderRadius: BorderRadius.circular(20.0),
                 color: const Color(0xff9A9390),
@@ -163,29 +165,41 @@ class _HomePageState extends State<HomePage>
         showSelectedLabels: false,
         showUnselectedLabels: false,
         backgroundColor: const Color(0xffFFFFFF),
-        selectedItemColor: const Color(0xff9A9390),
+        selectedItemColor: const Color(0xffFFFFFF),
         unselectedItemColor: const Color(0xffBBBBBB),
+        type: BottomNavigationBarType.fixed,
         elevation: 0,
-        items: const [
+        currentIndex: 0,
+        items: [
           BottomNavigationBarItem(
-            icon: ImageIcon(
+            icon: const ImageIcon(
               AssetImage('assets/icons/ic_home.png'),
             ),
             label: 'Home',
+            activeIcon: Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: const Color(0xff9A9390),
+                borderRadius: BorderRadius.circular(14),
+              ),
+              child: const ImageIcon(
+                AssetImage('assets/icons/ic_home.png'),
+              ),
+            ),
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: ImageIcon(
               AssetImage('assets/icons/ic_cart.png'),
             ),
             label: 'Cart',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: ImageIcon(
               AssetImage('assets/icons/ic_favorite.png'),
             ),
             label: 'Favorite',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: ImageIcon(
               AssetImage('assets/icons/ic_profile.png'),
             ),
@@ -216,7 +230,7 @@ class ProductCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => const DetailPage()),
+          MaterialPageRoute(builder: (_) => const DetailPage()),
         );
       },
       child: Column(
@@ -233,12 +247,9 @@ class ProductCard extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: 5.0,
-                left: 5.0,
-                child: IconButton(
-                  onPressed: () {},
-                  icon: Image.asset('assets/icons/ic_love.png'),
-                ),
+                top: 10,
+                left: 10,
+                child: Image.asset('assets/icons/ic_love.png'),
               ),
             ],
           ),
