@@ -1,16 +1,7 @@
-# fic_furniture_shop
+# Furniture Shop UI App
+FIC - Tugas Slicing UI
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Screenshots
+| Home Page    | Detail Page    |
+|--------------|----------------|
+| <img src="assets/screenshots/Screenshot_1674710502.png" width="300"/> | <img src="assets/screenshots/Screenshot_1674710512.png" width="300"/> |
